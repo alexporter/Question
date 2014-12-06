@@ -1,6 +1,6 @@
 $(document).ready(function() {
     setTimeout(function()   {
-        triangle();
+        triangle(true);
     }, 100);
     
     $(window).on("resize",triangle);
@@ -14,8 +14,9 @@ $(document).ready(function() {
     })
 });
 
-function triangle() {
-    var triHeight = ($("#stack-top").width() / 5),
+function triangle(first) {
+    var fullWidth = $("#stack-top").width(),
+        triHeight = (fullWidth / 5),
         colorInfo = getColorInfo($("#cur-page").val());
     
     if(!colorInfo)  {
@@ -31,6 +32,9 @@ function triangle() {
                     "color": colorInfo.bottomColor
                 };
             $("#next-button").fadeTo(0,0);
+            if(!first)  {
+                $("#next-button").removeClass("fadeInRightBig").addClass("fadeOutRightBig animated");
+            }
             $("#next-button").css(nextButtonBaseStyles);
             $("#next-button i").css(nextButtonIconBaseStyles);
             
@@ -62,7 +66,7 @@ function triangle() {
         
         $("#triangle").css({
             "margin-top": -1 * triHeight + "px",
-            "border-left": $("#stack-top").width() + "px solid transparent",
+            "border-left": fullWidth + "px solid transparent",
             "border-bottom": triHeight + "px solid " + colorInfo.topColor
         });
         $("#stack-bottom").css({
@@ -98,7 +102,8 @@ function getColorInfo(pageIndex) {
 function submitAnswer() {
     if(isCorrect()) {
         window.waitingOnNext = true;
-        $("#next-button").fadeTo(600,1);
+        $("#next-button").removeClass("fadeOutRightBig").addClass("fadeInRightBig animated");
+        $("#next-button").fadeTo(0,1);
         $("#stack-top").css({
             "top": "100%"
         });
