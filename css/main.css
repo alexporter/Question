@@ -9,6 +9,9 @@ html, body {
     overflow: hidden;
     background-color: #16a085;
 }
+.container {
+    -webkit-transform: translateZ(0);
+}
 
 
 /***STACK PARTS***/

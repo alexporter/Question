@@ -51,7 +51,7 @@ function triangle(first) {
             });
         }
         $("#next-button").css({
-            "top": (-1 * triHeight / 2) + "px"
+            "top": (-1 * (triHeight / 2 + 25)) + "px"
         });
         
         var stackTopStyles = {
