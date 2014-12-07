@@ -11,7 +11,11 @@ $(document).ready(function() {
             e.preventDefault();
             e.stopPropagation();
         }
-    })
+    });
+    
+    $("#answer").click(function()    {
+        submitAnswer();
+    });
 });
 
 function triangle(first) {
@@ -115,14 +119,15 @@ function isCorrect()   {
 }
 
 function moveNextButton(type)   {
-    var oppType = (type == "In" ? "Out" : "In"),
-        animEnd = "Big";
-    $("#next-button").removeClass("fade" + oppType + "Right" + animEnd).addClass("fade" + type + "Right" + animEnd + " animated");
+    var oppType = (type == "In" ? "Out" : "In");
+    $("#next-button").removeClass("fade" + oppType + "RightBig").addClass("fade" + type + "RightBig animated");
 }
 
 function goToNext() {
     window.waitingOnNext = false;
     var curPage = $("#cur-page").val();
     $("#cur-page").val((curPage * 1 + 1));
-    triangle();
+    setTimeout(function()   {
+        triangle();
+    }, 600);
 }
