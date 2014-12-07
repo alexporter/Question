@@ -116,7 +116,7 @@ function isCorrect()   {
 
 function moveNextButton(type)   {
     var oppType = (type == "In" ? "Out" : "In"),
-        animEnd = "";
+        animEnd = "Big";
     $("#next-button").removeClass("fade" + oppType + "Right" + animEnd).addClass("fade" + type + "Right" + animEnd + " animated");
 }
 

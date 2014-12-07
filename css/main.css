@@ -8,6 +8,7 @@ html, body {
     color: white;
     overflow: hidden;
     background-color: #16a085;
+    -webkit-transform: translateZ(0);
 }
 
 
