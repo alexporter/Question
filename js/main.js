@@ -33,7 +33,7 @@ function triangle(first) {
                 };
             $("#next-button").fadeTo(0,0);
             if(!first)  {
-                $("#next-button").removeClass("fadeInRightBig").addClass("fadeOutRightBig animated");
+                moveNextButton("Out");
             }
             $("#next-button").css(nextButtonBaseStyles);
             $("#next-button i").css(nextButtonIconBaseStyles);
@@ -102,7 +102,7 @@ function getColorInfo(pageIndex) {
 function submitAnswer() {
     if(isCorrect()) {
         window.waitingOnNext = true;
-        $("#next-button").removeClass("fadeOutRightBig").addClass("fadeInRightBig animated");
+        moveNextButton("In");
         $("#next-button").fadeTo(0,1);
         $("#stack-top").css({
             "top": "100%"
@@ -112,6 +112,12 @@ function submitAnswer() {
 
 function isCorrect()   {
     return true;
+}
+
+function moveNextButton(type)   {
+    var oppType = (type == "In" ? "Out" : "In"),
+        animEnd = "";
+    $("#next-button").removeClass("fade" + oppType + "Right" + animEnd).addClass("fade" + type + "Right" + animEnd + " animated");
 }
 
 function goToNext() {
