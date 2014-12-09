@@ -14,7 +14,7 @@ $(document).ready(function() {
     });
     
     $("#answer").click(function()    {
-        submitAnswer();
+        // ...
     });
 });
 
@@ -22,6 +22,7 @@ function triangle(first) {
     var fullWidth = $("#stack-top").width(),
         triHeight = (fullWidth / 5),
         colorInfo = getColorInfo($("#cur-page").val());
+    setQuestion($("#cur-page").val());
     
     if(!colorInfo)  {
         // final one
@@ -77,6 +78,10 @@ function triangle(first) {
             "background-color": colorInfo.bottomColor
         });
         $("#stack-top").css(stackTopStyles);
+        $("#question-box").css({
+            "top": (($("#stack-top").height() - triHeight - $("#question-box").height()) / 2) + "px"
+        });
+        $("#question-box-top").css("background-color",colorInfo.bottomColor);
     }
 }
 
@@ -103,19 +108,90 @@ function getColorInfo(pageIndex) {
     return (colorInfo[pageIndex] ? colorInfo[pageIndex] : false);
 }
 
+function setQuestion(pageIndex)  {
+    var questionInfo = [
+        {
+            question: "Is this question 1?"
+        },
+        {
+            question: "Is this question 2?"
+        },
+        {
+            question: "Is this question 3?"
+        },
+        {
+            question: "Is this question 4?"
+        }
+    ];
+    /*
+    var questionInfo = [
+        {
+            question: "Is this question 1?"
+        },
+        {
+            question: "Is this question 2?"
+        },
+        {
+            question: "Is this question 3?"
+        },
+        {
+            question: "Is this question 4?"
+        }
+    ];
+    */
+    
+    $("#question-header").html("Clue " + ((pageIndex * 1 + 1) * 1));
+    var questionDetails = (questionInfo[pageIndex] ? questionInfo[pageIndex] : false);
+    if(questionDetails)    {
+        $("#question").html(questionDetails.question);
+    }
+    else    {
+        $("#question").html("hmmm...text me...it messed up");
+    }
+}
+
 function submitAnswer() {
-    if(isCorrect()) {
+    if(isCorrect($("#cur-page").val())) {
         window.waitingOnNext = true;
+        document.body.style.zoom = 1.0;
         moveNextButton("In");
         $("#next-button").fadeTo(0,1);
         $("#stack-top").css({
             "top": "100%"
         });
+        $("#answer").val("");
+    }
+    else    {
+        $("#answer").addClass("shake animated");
+        setTimeout(function()   {
+            $("#answer").removeClass("shake animated");
+        }, 1000);
     }
 }
 
-function isCorrect()   {
-    return true;
+function isCorrect(pageIndex)   {
+    var answers = [
+            {
+                answer: "yes"
+            },
+            {
+                answer: "no"
+            },
+            {
+                answer: "yes"
+            },
+            {
+                answer: "no"
+            }
+        ],
+        answerSet = (answers[pageIndex] ? answers[pageIndex] : false),
+        isCorrect = false;
+    
+    if(answerSet)   {
+        isCorrect = ($("#answer").val() == answerSet.answer);
+    }
+    
+    return isCorrect;
 }
 
 function moveNextButton(type)   {

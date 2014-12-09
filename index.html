@@ -19,13 +19,14 @@
             <div class="stack" id="stack-top">
                 <div id="triangle"><div class="button" id="next-button" onclick="goToNext()"><i class="fa fa-check"></i></div></div>
                 <div id="question-box">
-                    <div class="question-box-top">
-                        <div class="question-header">Clue</div>
-                        <div class="question">...</div>
+                    <div id="question-box-top">
+                        <div id="question-header">Clue 1</div>
+                        <div id="question">...</div>
                     </div>
-                    <div class="question-box-bottom">
-                        <div class="answer-header">Answer</div>
-                        <input type="textfield" class="answer" id="answer" placeholder="Thoughts..." >
+                    <div id="answer-submit" onclick="submitAnswer()"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div id="question-box-bottom">
+                        <div id="answer-header">Answer</div>
+                        <input type="textfield" id="answer" placeholder="Thoughts..." >
                     </div>
                 </div>
                 <!--<div class="button" onclick="submitAnswer()">CHECKS</div>-->
