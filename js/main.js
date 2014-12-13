@@ -14,7 +14,7 @@ $(document).ready(function() {
     });
     
     $("#answer").click(function()    {
-        // ...
+        // Send Email?
     });
 });
 
@@ -56,7 +56,7 @@ function triangle(first) {
             });
         }
         $("#next-button").css({
-            "top": (-1 * (triHeight / 2 + 25)) + "px"
+            "top": (-1 * (triHeight / 2 + 15)) + "px"
         });
         
         var stackTopStyles = {
@@ -67,6 +67,10 @@ function triangle(first) {
             };
         if(!window.waitingOnNext)   {
             stackTopStyles["top"] = triHeight + "px";
+            $("#reveal-container").css({
+                "top": "100%"
+            });
+            setTimeout(function() { $("#reveal-container").html(""); }, 600);
         }
         
         $("#triangle").css({
@@ -108,28 +112,40 @@ function getColorInfo(pageIndex) {
     return (colorInfo[pageIndex] ? colorInfo[pageIndex] : false);
 }
 
-function setQuestion(pageIndex)  {
-    var questionInfo = [
+function getReveal(pageIndex)   {
+    var revealInfo = [
         {
-            question: "Is this question 1?"
+            html: '<img src="images/casbah.jpg">',
+            stackedImage: true,
+            value: 18
         },
         {
-            question: "Is this question 2?"
+            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" allowfullscreen></iframe>',
+            value: 7
         },
         {
-            question: "Is this question 3?"
+            html: '<img src="images/chicago.jpg">',
+            stackedImage: true,
+            value: 23
         },
         {
-            question: "Is this question 4?"
+            html: '<img src="images/elliott_harlow.jpg">',
+            stackedImage: true,
+            value: 6
         }
     ];
+    
+    return (revealInfo[pageIndex] ? revealInfo[pageIndex] : {html: ""});
+}
+
+function setQuestion(pageIndex)  {
     /*
     var questionInfo = [
         {
-            question: "Is this question 1?"
+            question: "Small mail! What does it say?"
         },
         {
-            question: "Is this question 2?"
+            question: "What is the scavenger hunt spice's second ingredient?"
         },
         {
             question: "Is this question 3?"
@@ -139,6 +155,22 @@ function setQuestion(pageIndex)  {
         }
     ];
     */
+    ///*
+    var questionInfo = [
+        {
+            question: "Is this question 1?"
+        },
+        {
+            question: "Is this question 2?"
+        },
+        {
+            question: "Is this question 3?"
+        },
+        {
+            question: "Is this question 4?"
+        }
+    ];
+    //*/
     
     $("#question-header").html("Clue " + ((pageIndex * 1 + 1) * 1));
     var questionDetails = (questionInfo[pageIndex] ? questionInfo[pageIndex] : false);
@@ -153,11 +185,25 @@ function setQuestion(pageIndex)  {
 function submitAnswer() {
     if(isCorrect($("#cur-page").val())) {
         window.waitingOnNext = true;
-        document.body.style.zoom = 1.0;
+        //document.body.style.zoom = 1.0;
         moveNextButton("In");
         $("#next-button").fadeTo(0,1);
         $("#stack-top").css({
             "top": "100%"
+        });
+        $("#reveal-container").css({
+            "top": "50%"
+        });
+        var reveal = getReveal($("#cur-page").val()),
+            revealHtml = reveal.html,
+            colorInfo = getColorInfo($("#cur-page").val());
+        if(reveal.stackedImage) {
+            revealHtml = '<div class="stack-photo">' + reveal.html + '</div>';
+        }
+        revealHtml = '<div id="clue-value" class="clue-value' + (reveal.stackedImage ? " clue-value-photo" : "") + '">' + reveal.value + '</div>' + revealHtml;
+        $("#reveal-container").html(revealHtml);
+        $("#clue-value").css({
+            color: colorInfo.bottomColor
         });
         $("#answer").val("");
     }
@@ -170,12 +216,13 @@ function submitAnswer() {
 }
 
 function isCorrect(pageIndex)   {
+return true;
     var answers = [
             {
-                answer: "yes"
+                answer: "See you soon (don't forget to take notes).  I love you!"
             },
             {
-                answer: "no"
+                answer: "black pepper"
             },
             {
                 answer: "yes"
@@ -188,7 +235,7 @@ function isCorrect(pageIndex)   {
         isCorrect = false;
     
     if(answerSet)   {
-        isCorrect = ($("#answer").val() == answerSet.answer);
+        isCorrect = ($("#answer").val().toLowerCase() == answerSet.answer.toLowerCase());
     }
     
     return isCorrect;

@@ -13,6 +13,15 @@ html, body {
 textarea:focus, input:focus{
     outline: 0;
 }
+.h-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.v-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 
 /***STACK PARTS***/
@@ -33,6 +42,9 @@ textarea:focus, input:focus{
 }
 #stack-bottom {
     z-index: 1;
+    background-image: url(../images/background.png);
+    background-size: cover;
+    opacity: 0.81;
 }
 #stack-top {
     z-index: 2;
@@ -68,21 +80,109 @@ textarea:focus, input:focus{
     transition: all 0.6s ease-in-out;
 }
 #next-button i {
-    font-size: 50px;
-    margin-top: 11px;
+    font-size: 53px;
     color: #1abc9c;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+@media screen and (max-width: 550px) {
+    #next-button {
+        width: 35px;
+        height: 35px;
+    }
+    
+    #next-button i {
+        font-size: 29px;
+    }
+}
+
+
+/***REVEAL***/
+#reveal-container {
+    text-align: center;
+    top: 100%;
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+.clue-value {
+    position: absolute;
+    z-index: 3;
+    color: black;
+    font-size: 50px;
+    width: 80px;
+    bottom: 105%;
+    background-color: white;
+    border-radius: 50%;
+    height: 80px;
+    line-height: 1.6;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.85;
+    border: 1px solid lightgray;
+}
+.clue-value-photo {
+    bottom: 110px;
+}
+.stack-photo {
+    float: left;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.stack-photo img {
+    border: 6px solid #fff;
+    width: 200px;
+}
+.stack-photo:before {
+    content: "";
+    height: 200px; width: 200px;
+    background: #ebefe0;
+    border: 6px solid #fff;
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: -10px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+.stack-photo:after {
+    content: "";
+    height: 200px;
+    width: 200px;
+    background: #697076;
+    border: 6px solid #fff;
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 0px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    -o-transform: rotate(4deg);
+    -ms-transform: rotate(4deg);
+    transform: rotate(4deg);
+}
 
 
 /***CLUE BOX***/
 #question-box {
     width: 500px;
-    margin-left: auto;
-    margin-right: auto;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     position: relative;
     transform: translateY(-50%);
@@ -126,15 +226,15 @@ textarea:focus, input:focus{
     cursor: pointer;
 }
 #answer-submit i {
-    padding-top: 14px;
-    font-size: 21px;
+    font-size: 27px;
     color: #696969;
+}
+#answer-submit i:before {
+    padding-top: 10px;
 }
 #answer-header {
     text-align: left;
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     padding-top: 15px;
     padding-bottom: 10px;
 }
@@ -157,11 +257,4 @@ textarea:focus, input:focus{
     #answer-submit {
         margin-left: 78%;
     }
-}
-
-
-/***IMAGES***/
-.main-image {
-    width: 100%;
-    opacity: 0.81;
 }

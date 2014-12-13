@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>REPLACE_ME</title>
         <meta name="description" content="REPLACE_ME">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
         <link href="http://fonts.googleapis.com/css?family=Roboto:900,500,100,300,700,400" rel="stylesheet" type="text/css">
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <div id="stack-outer">
             <div class="stack" id="stack-bottom">
-                <!--<img src="images/background.png" class="main-image" />-->
+                <div id="reveal-container" class="h-center v-center"></div>
             </div>
             <div class="stack" id="stack-top">
-                <div id="triangle"><div class="button" id="next-button" onclick="goToNext()"><i class="fa fa-check"></i></div></div>
-                <div id="question-box">
+                <div id="triangle"><div class="button" id="next-button" onclick="goToNext()"><i class="icon ion-android-done"></i></div></div>
+                <div id="question-box" class="h-center">
                     <div id="question-box-top">
                         <div id="question-header">Clue 1</div>
                         <div id="question">...</div>
                     </div>
-                    <div id="answer-submit" onclick="submitAnswer()"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div id="answer-submit" onclick="submitAnswer()"><i class="ion-thumbsup"></i></div>
                     <div id="question-box-bottom">
-                        <div id="answer-header">Answer</div>
+                        <div id="answer-header" class="h-center">Answer</div>
                         <input type="textfield" id="answer" placeholder="Thoughts..." >
                     </div>
                 </div>
-                <!--<div class="button" onclick="submitAnswer()">CHECKS</div>-->
             </div>
         </div>
         <input type="hidden" id="cur-page" value="0">
