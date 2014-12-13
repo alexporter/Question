@@ -115,6 +115,10 @@ function getColorInfo(pageIndex) {
 function getReveal(pageIndex)   {
     var revealInfo = [
         {
+            html: '<div class="paper">See you soon (don\'t forget to take notes).  I love you!</div>',
+            value: 8
+        },
+        {
             html: '<img src="images/casbah.jpg">',
             stackedImage: true,
             value: 18

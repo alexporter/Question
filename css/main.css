@@ -21,6 +21,7 @@ textarea:focus, input:focus{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
 
 
@@ -121,6 +122,7 @@ textarea:focus, input:focus{
     line-height: 1.6;
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     opacity: 0.85;
     border: 1px solid lightgray;
 }
@@ -136,6 +138,7 @@ textarea:focus, input:focus{
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     left: 50%;
     transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
 }
 .stack-photo img {
     border: 6px solid #fff;
@@ -178,6 +181,46 @@ textarea:focus, input:focus{
     -ms-transform: rotate(4deg);
     transform: rotate(4deg);
 }
+.paper {
+    text-align: left;
+    font: 16px 'Amatic SC', cursive;
+    color: #282625;
+    margin: 0 auto;
+    width: 50%;
+    line-height: 30px;
+    padding: 37px 55px 27px;
+    position: relative;
+    border: 1px solid #B5B5B5;
+    background: white;
+    background: -webkit-linear-gradient(top, #DFE8EC 0%, white 8%) 0 57px;
+    background: -moz-linear-gradient(top, #DFE8EC 0%, white 8%) 0 57px;
+    background: linear-gradient(top, #DFE8EC 0%, white 8%) 0 57px;
+    -webkit-background-size: 100% 30px;
+    -moz-background-size: 100% 30px;
+    -ms-background-size: 100% 30px;
+    background-size: 100% 30px;
+}
+.paper::before {
+    content: "";
+    z-index: -1;
+    margin: 0 1px;
+    width: 60%;
+    height: 10px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    background: white;
+    border: 1px solid #B5B5B5;
+}
+.paper::after {
+    content: "";
+    position: absolute;
+    width: 0px;
+    top: 0;
+    left: 39px;
+    bottom: 0;
+    border-left: 1px solid #F8D3D3;
+}
 
 
 /***CLUE BOX***/
@@ -186,6 +229,7 @@ textarea:focus, input:focus{
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     position: relative;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
 #question-box-top {
     width: 100%;
@@ -252,6 +296,7 @@ textarea:focus, input:focus{
     #question-box {
         width: 90%;
         transform: translateY(0%);
+        -webkit-transform: translateY(0%);
     }
     
     #answer-submit {
