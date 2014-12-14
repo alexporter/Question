@@ -101,7 +101,7 @@ function triangle(first) {
 function getQuestionInfo(pageIndex) {
      var questionInfo = [
         {
-            question: "Small mail! What does it say?",
+            question: "Small mails! What does it say?",
             topColor: "#1abc9c", // light
             bottomColor: "#16a085", // dark
             answer: "See you soon (don't forget to take notes).  I love you!",
