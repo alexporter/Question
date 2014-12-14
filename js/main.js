@@ -1,11 +1,3 @@
-window.addEventListener("load",function() {
-    // Set a timeout...
-    setTimeout(function(){
-        // Hide the address bar!
-        window.scrollTo(0, 1);
-    }, 0);
-});
-
 $(document).ready(function() {
     setTimeout(function(){
         // Hide the address bar!
@@ -18,13 +10,13 @@ $(document).ready(function() {
     
     $(window).on("resize",triangle);
     
-    /*$("body").on({
+    $("body").on({
         "mousewheel": function(e) {
             if(e.target.id == "el") return;
             e.preventDefault();
             e.stopPropagation();
         }
-    });*/
+    });
 });
 
 function triangle(first) {
@@ -101,7 +93,7 @@ function triangle(first) {
 function getQuestionInfo(pageIndex) {
      var questionInfo = [
         {
-            question: "Small mails! What does it say?",
+            question: "Small mail! What does it say?",
             topColor: "#1abc9c", // light
             bottomColor: "#16a085", // dark
             answer: "See you soon (don't forget to take notes).  I love you!",
@@ -117,6 +109,7 @@ function getQuestionInfo(pageIndex) {
             answer: "black pepper",
             reveal: {
                 html: '<div class="paper">Reminds me of our favorite meal...salmon!<br/><br/>NOTE:  Like all things, this application is not perfect...if you come across a revealed video the little checkmark at the bottom is there, you just can barely see it.  If you click in the area, it will still work :).</div>',
+                smallClueValue: true,
                 value: 42
             }
         },
@@ -162,6 +155,7 @@ function getQuestionInfo(pageIndex) {
             answer: "Solstice Rolling Answer",
             reveal: {
                 html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you.<br/><img src="images/iceland.jpg" width=150 /></div>',
+                smallClueValue: true,
                 value: 23
             }
         },
@@ -238,6 +232,23 @@ function submitAnswer() {
         $("#clue-value").css({
             color: colorInfo.bottomColor
         });
+        if(reveal.smallClueValue)   {
+            $("#clue-value").css({
+                "height": "40px",
+                "width": "40px",
+                "font-size": "25px",
+                "top": "2px"
+            });
+        }
+        else    {
+            $("#clue-value").css({
+                "height": "80px",
+                "width": "80px",
+                "font-size": "50px",
+                "bottom": "105%",
+                "top": "initial"
+            });
+        }
         $("#answer").val("");
     }
     else    {

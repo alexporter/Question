@@ -127,7 +127,7 @@ textarea:focus, input:focus{
     border: 1px solid lightgray;
 }
 .clue-value-photo {
-    bottom: 110px;
+    bottom: 110px !important;
 }
 .stack-photo {
     float: left;
