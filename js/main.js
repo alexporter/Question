@@ -17,7 +17,7 @@ $(document).ready(function() {
 function triangle(first) {
     var fullWidth = $("#stack-top").width(),
         triHeight = (fullWidth / 5),
-        colorInfo = getColorInfo($("#cur-page").val());
+        colorInfo = getQuestionInfo($("#cur-page").val());
     setQuestion($("#cur-page").val());
     
     if(!colorInfo)  {
@@ -85,58 +85,72 @@ function triangle(first) {
     }
 }
 
-function getColorInfo(pageIndex) {
-    var colorInfo = [
+function getQuestionInfo(pageIndex) {
+     var questionInfo = [
         {
+            question: "Small mail! What does it say?",
             topColor: "#1abc9c", // light
-            bottomColor: "#16a085" // dark
+            bottomColor: "#16a085", // dark
+            answer: "See you soon (don't forget to take notes).  I love you!",
+            reveal: {
+                html: '<div class="paper">Text me if you need any help, have fun, and I love you!</div>',
+                value: 8
+            }
         },
         {
+            question: "What is the scavenger hunt spice's second ingredient?",
             topColor: "#e74c3c",
-            bottomColor: "#c0392b"
-        },
-        {
-            topColor: "#f1c40f",
-            bottomColor: "#f39c12"
-        },
-        {
-            topColor: "#ea935a",
-            bottomColor: "#d35400"
-        },
-        {
-            topColor: "#c687e1",
-            bottomColor: "#8e44ad"
-        },
-        {
-            topColor: "#73889c",
-            bottomColor: "#34495e"
-        }
-    ];
-    
-    return (colorInfo[pageIndex] ? colorInfo[pageIndex] : false);
-}
-
-function setQuestion(pageIndex)  {
-    ///*
-    var questionInfo = [
-        {
-            question: "Small mail! What does it say?"
-        },
-        {
-            question: "What is the scavenger hunt spice's second ingredient?"
+            bottomColor: "#c0392b",
+            answer: "black pepper",
+            reveal: {
+                html: '<div class="paper">Reminds me of our favorite meal...salmon!<br/><br/>NOTE:  Like all things, this application is not perfect...if you come across a revealed video the little checkmark at the bottom is there, you just can barely see it.  If you click in the area, it will still work :).</div>',
+                value: 42
+            }
         },
         {
             question: "Big game hunter on the dance floor, prayer guidance on the bar patio, dubstep...what more could you ask for on your first 'date'?",
-            longClue: true
+            longClue: true,
+            topColor: "#f1c40f",
+            bottomColor: "#f39c12",
+            answer: "Fatso's Answer",
+            reveal: {
+                html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/PQddlJtYmjw?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
+                value: 23
+            }
         },
         {
-            question: "Casbah...where we made it 'Facebook Official'"
+            question: "Casbah...where we made it 'Facebook Official'",
+            topColor: "#ea935a",
+            bottomColor: "#d35400",
+            answer: "Casbah Answer",
+            reveal: {
+                html: '<img src="images/casbah.jpg" />',
+                stackedImage: true,
+                value: 18
+            }
         },
         {
-            question: "We had salmon with a view in this building on our first trip together"
+            question: "We had salmon with a view in this building on our first trip together",
+            mediumClue: true,
+            topColor: "#c687e1",
+            bottomColor: "#8e44ad",
+            answer: "John Hancock Center",
+            reveal: {
+                html: '<img src="images/chicago.jpg" />',
+                stackedImage: true,
+                value: 23
+            }
         },
         {
-            question: "Icelandic traditions are the best!  Rolling around in the grass naked here was a bad idea."
+            question: "Icelandic traditions are the best!  Rolling around in the grass naked here was a bad idea.",
+            mediumClue: true,
+            topColor: "#73889c",
+            bottomColor: "#34495e",
+            answer: "Solstice Rolling Answer",
+            reveal: {
+                html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you.<br/><img src="images/iceland.jpg" width=150 /></div>',
+                value: 23
+            }
         },
         {
             question: ""
@@ -145,34 +159,25 @@ function setQuestion(pageIndex)  {
             question: ""
         }
     ];
-    //*/
-    /*
-    var questionInfo = [
-        {
-            question: "Is this question 1 (1)?"
-        },
-        {
-            question: "Is this question 2?"
-        },
-        {
-            question: "Is this question 3?"
-        },
-        {
-            question: "Is this question 4?"
-        }
-    ];
-    */
+    
+    return (questionInfo[pageIndex] ? questionInfo[pageIndex] : false);
+}
+
+function setQuestion(pageIndex)  {
+    var questionInfo = getQuestionInfo(pageIndex);
     
     $("#question-header").html("Clue " + ((pageIndex * 1 + 1) * 1));
-    var questionDetails = (questionInfo[pageIndex] ? questionInfo[pageIndex] : false);
-    if(questionDetails)    {
-        if(questionDetails.longClue)    {
-            $("#question").css("font-size","13px");
+    if(questionInfo)    {
+        if(questionInfo.longClue)    {
+            $("#question").css("font-size","12px");
+        }
+        else if(questionInfo.mediumClue)    {
+            $("#question").css("font-size","15px");
         }
         else    {
             $("#question").css("font-size","18px");
         }
-        $("#question").html(questionDetails.question);
+        $("#question").html(questionInfo.question);
     }
     else    {
         $("#question").html("hmmm...text me...it messed up");
@@ -181,85 +186,20 @@ function setQuestion(pageIndex)  {
 
 function isCorrect(pageIndex)   {
 return true;
-    var answers = [
-            {
-                answer: "See you soon (don't forget to take notes).  I love you!"
-            },
-            {
-                answer: "black pepper"
-            },
-            {
-                answer: "Fatso's Answer"
-            },
-            {
-                answer: "Casbah Answer"
-            },
-            {
-                answer: "John Hancock Center"
-            },
-            {
-                answer: "Solstice Rolling Answer"
-            },
-            {
-                answer: ""
-            },
-            {
-                answer: ""
-            },
-            {
-                answer: ""
-            }
-        ],
-        answerSet = (answers[pageIndex] ? answers[pageIndex] : false),
+    var questionInfo = getQuestionInfo(pageIndex),
         isCorrect = false;
     
-    if(answerSet)   {
-        isCorrect = ($("#answer").val().toLowerCase() == answerSet.answer.toLowerCase());
+    if(questionInfo)   {
+        isCorrect = ($("#answer").val().toLowerCase() == questionInfo.answer.toLowerCase());
     }
     
     return isCorrect;
 }
 
 function getReveal(pageIndex)   {
-    var revealInfo = [
-        {
-            html: '<div class="paper">Text me if you need any help, have fun, and I love you!</div>',
-            value: 8
-        },
-        {
-            html: '<div class="paper">Reminds me of our favorite meal...salmon!<br/><br/>NOTE:  Like all things, this application is not perfect...if you come across a revealed video the little checkmark at the bottom is there, you just can barely see it.  If you click in the area, it will still work :).</div>',
-            value: 42
-        },
-        {
-            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/PQddlJtYmjw?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
-            value: 23
-        },
-        {
-            html: '<img src="images/casbah.jpg" />',
-            stackedImage: true,
-            value: 18
-        },
-        {
-            html: '<img src="images/chicago.jpg" />',
-            stackedImage: true,
-            value: 23
-        },
-        {
-            html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you.<br/><img src="images/iceland.jpg" width=200 /></div>',
-            value: 23
-        },
-        {
-            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
-            value: 7
-        },
-        {
-            html: '<img src="images/elliott_harlow.jpg">',
-            stackedImage: true,
-            value: 6
-        }
-    ];
+    var questionInfo = getQuestionInfo(pageIndex);
     
-    return (revealInfo[pageIndex] ? revealInfo[pageIndex] : {html: ""});
+    return questionInfo.reveal;
 }
 
 function submitAnswer() {
@@ -276,7 +216,7 @@ function submitAnswer() {
         });
         var reveal = getReveal($("#cur-page").val()),
             revealHtml = reveal.html,
-            colorInfo = getColorInfo($("#cur-page").val());
+            colorInfo = getQuestionInfo($("#cur-page").val());
         if(reveal.stackedImage) {
             revealHtml = '<div class="stack-photo">' + reveal.html + '</div>';
         }

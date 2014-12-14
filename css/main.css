@@ -183,7 +183,7 @@ textarea:focus, input:focus{
 }
 .paper {
     text-align: left;
-    font: 16px 'Amatic SC', cursive;
+    font: 15px 'Amatic SC', cursive;
     color: #282625;
     margin: 0 auto;
     width: 50%;
