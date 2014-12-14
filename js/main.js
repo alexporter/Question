@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    window.scrollTo(0,1);
+    
     setTimeout(function()   {
         triangle(true);
     }, 100);
