@@ -115,7 +115,7 @@ function getColorInfo(pageIndex) {
 function getReveal(pageIndex)   {
     var revealInfo = [
         {
-            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=opaque" style="z-index: 0 !important;" frameborder="0"></iframe>',
+            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" style="z-index: 0 !important;" frameborder="0"></iframe>',
             value: 7
         },
         {
