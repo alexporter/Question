@@ -68,7 +68,7 @@ textarea:focus, input:focus{
 }
 #next-button {
     position: absolute;
-    right: 10%;
+    right: -100%;
     border-radius: 50%;
     border: 3px solid #1abc9c;
     width: 70px;

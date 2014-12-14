@@ -246,8 +246,10 @@ return true;
 }
 
 function moveNextButton(type)   {
-    var oppType = (type == "In" ? "Out" : "In");
-    $("#next-button").removeClass("fade" + oppType + "RightBig").addClass("fade" + type + "RightBig animated");
+    /*var oppType = (type == "In" ? "Out" : "In");
+    $("#next-button").removeClass("fade" + oppType + "RightBig").addClass("animated fade" + type + "RightBig");*/
+    var right = (type == "In" ? "10%" : "-100%");
+    $("#next-button").css("right",right);
 }
 
 function goToNext() {
