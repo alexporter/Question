@@ -115,14 +115,14 @@ function getColorInfo(pageIndex) {
 function getReveal(pageIndex)   {
     var revealInfo = [
         {
-            html: '<div class="paper">See you soon (don\'t forget to take notes).  I love you!</div>',
+            html: '<div class="paper">Text me if you need any help :).  I love you!</div>',
             value: 8
         },
-        {
+        /*{
             html: '<img src="images/casbah.jpg">',
             stackedImage: true,
             value: 18
-        },
+        },*/
         {
             html: '<object width="200" height="120" data="http://www.youtube.com/v/2muto1kBPFg"></object>',
             value: 7
