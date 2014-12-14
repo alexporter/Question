@@ -115,6 +115,10 @@ function getColorInfo(pageIndex) {
 function getReveal(pageIndex)   {
     var revealInfo = [
         {
+            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" style="padding: 0; margin: 0; z-index: 0;" allowfullscreen></iframe>',
+            value: 7
+        },
+        {
             html: '<div class="paper">Text me if you need any help :).  I love you!</div>',
             value: 8
         },
@@ -122,10 +126,6 @@ function getReveal(pageIndex)   {
             html: '<img src="images/casbah.jpg">',
             stackedImage: true,
             value: 18
-        },
-        {
-            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" style="padding: 0; margin: 0; z-index: 0;" allowfullscreen></iframe>',
-            value: 7
         },
         {
             html: '<img src="images/chicago.jpg">',
