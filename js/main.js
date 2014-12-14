@@ -115,7 +115,7 @@ function getColorInfo(pageIndex) {
 function getReveal(pageIndex)   {
     var revealInfo = [
         {
-            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" style="padding: 0; margin: 0; z-index: 0;" allowfullscreen></iframe>',
+            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg?wmode=opaque" frameborder="0" allowfullscreen></iframe>',
             value: 7
         },
         {
@@ -162,7 +162,7 @@ function setQuestion(pageIndex)  {
     ///*
     var questionInfo = [
         {
-            question: "Is this question 1?"
+            question: "Is this question 1 (1)?"
         },
         {
             question: "Is this question 2?"
