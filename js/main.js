@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    window.scrollTo(0,1);
-    
     setTimeout(function()   {
         triangle(true);
     }, 100);
@@ -14,6 +12,11 @@ $(document).ready(function() {
             e.stopPropagation();
         }
     });
+    
+    setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
 });
 
 function triangle(first) {
