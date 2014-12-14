@@ -249,7 +249,7 @@ function moveNextButton(type)   {
     /*var oppType = (type == "In" ? "Out" : "In");
     $("#next-button").removeClass("fade" + oppType + "RightBig").addClass("animated fade" + type + "RightBig");*/
     var right = (type == "In" ? "10%" : "-100%"),
-        time = (type == "In" ? 600 : 0);
+        time = (type == "In" ? 1000 : 0);
     setTimeout(function() { $("#next-button").css("right",right); }, 0);
 }
 
