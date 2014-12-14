@@ -124,6 +124,14 @@ function getReveal(pageIndex)   {
             value: 18
         },
         {
+            html: '<object width="200" height="120" data="http://www.youtube.com/v/2muto1kBPFg"></object>',
+            value: 7
+        },
+        {
+            html: '<embed width="200" height="120" src="http://www.youtube.com/v/2muto1kBPFg">',
+            value: 7
+        },
+        {
             html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" allowfullscreen></iframe>',
             value: 7
         },
