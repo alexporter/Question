@@ -118,21 +118,13 @@ function getReveal(pageIndex)   {
             html: '<div class="paper">Text me if you need any help :).  I love you!</div>',
             value: 8
         },
-        /*{
+        {
             html: '<img src="images/casbah.jpg">',
             stackedImage: true,
             value: 18
-        },*/
-        {
-            html: '<object width="200" height="120" data="http://www.youtube.com/v/2muto1kBPFg"></object>',
-            value: 7
         },
         {
-            html: '<embed width="200" height="120" src="http://www.youtube.com/v/2muto1kBPFg">',
-            value: 7
-        },
-        {
-            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" allowfullscreen></iframe>',
+            html: '<iframe width="200" height="120" src="http://www.youtube.com/embed/2muto1kBPFg" frameborder="0" style="padding: 0; margin: 0;" allowfullscreen></iframe>',
             value: 7
         },
         {
