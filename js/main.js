@@ -12,10 +12,6 @@ $(document).ready(function() {
             e.stopPropagation();
         }
     });
-    
-    $("#answer").click(function()    {
-        // Send Email?
-    });
 });
 
 function triangle(first) {
@@ -104,46 +100,24 @@ function getColorInfo(pageIndex) {
             bottomColor: "#f39c12"
         },
         {
-            topColor: "#3498db",
-            bottomColor: "#2980b9"
+            topColor: "#ea935a",
+            bottomColor: "#d35400"
+        },
+        {
+            topColor: "#c687e1",
+            bottomColor: "#8e44ad"
+        },
+        {
+            topColor: "#73889c",
+            bottomColor: "#34495e"
         }
     ];
     
     return (colorInfo[pageIndex] ? colorInfo[pageIndex] : false);
 }
 
-function getReveal(pageIndex)   {
-    var revealInfo = [
-        {
-            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
-            value: 7
-        },
-        {
-            html: '<div class="paper">Text me if you need any help :).  I love you!</div>',
-            value: 8
-        },
-        {
-            html: '<img src="images/casbah.jpg">',
-            stackedImage: true,
-            value: 18
-        },
-        {
-            html: '<img src="images/chicago.jpg">',
-            stackedImage: true,
-            value: 23
-        },
-        {
-            html: '<img src="images/elliott_harlow.jpg">',
-            stackedImage: true,
-            value: 6
-        }
-    ];
-    
-    return (revealInfo[pageIndex] ? revealInfo[pageIndex] : {html: ""});
-}
-
 function setQuestion(pageIndex)  {
-    /*
+    ///*
     var questionInfo = [
         {
             question: "Small mail! What does it say?"
@@ -152,14 +126,27 @@ function setQuestion(pageIndex)  {
             question: "What is the scavenger hunt spice's second ingredient?"
         },
         {
-            question: "Is this question 3?"
+            question: "Big game hunter on the dance floor, prayer guidance on the bar patio, dubstep...what more could you ask for on your first 'date'?",
+            longClue: true
         },
         {
-            question: "Is this question 4?"
+            question: "Casbah...where we made it 'Facebook Official'"
+        },
+        {
+            question: "We had salmon with a view in this building on our first trip together"
+        },
+        {
+            question: "Icelandic traditions are the best!  Rolling around in the grass naked here was a bad idea."
+        },
+        {
+            question: ""
+        },
+        {
+            question: ""
         }
     ];
-    */
-    ///*
+    //*/
+    /*
     var questionInfo = [
         {
             question: "Is this question 1 (1)?"
@@ -174,16 +161,105 @@ function setQuestion(pageIndex)  {
             question: "Is this question 4?"
         }
     ];
-    //*/
+    */
     
     $("#question-header").html("Clue " + ((pageIndex * 1 + 1) * 1));
     var questionDetails = (questionInfo[pageIndex] ? questionInfo[pageIndex] : false);
     if(questionDetails)    {
+        if(questionDetails.longClue)    {
+            $("#question").css("font-size","13px");
+        }
+        else    {
+            $("#question").css("font-size","18px");
+        }
         $("#question").html(questionDetails.question);
     }
     else    {
         $("#question").html("hmmm...text me...it messed up");
     }
+}
+
+function isCorrect(pageIndex)   {
+return true;
+    var answers = [
+            {
+                answer: "See you soon (don't forget to take notes).  I love you!"
+            },
+            {
+                answer: "black pepper"
+            },
+            {
+                answer: "Fatso's Answer"
+            },
+            {
+                answer: "Casbah Answer"
+            },
+            {
+                answer: "John Hancock Center"
+            },
+            {
+                answer: "Solstice Rolling Answer"
+            },
+            {
+                answer: ""
+            },
+            {
+                answer: ""
+            },
+            {
+                answer: ""
+            }
+        ],
+        answerSet = (answers[pageIndex] ? answers[pageIndex] : false),
+        isCorrect = false;
+    
+    if(answerSet)   {
+        isCorrect = ($("#answer").val().toLowerCase() == answerSet.answer.toLowerCase());
+    }
+    
+    return isCorrect;
+}
+
+function getReveal(pageIndex)   {
+    var revealInfo = [
+        {
+            html: '<div class="paper">Text me if you need any help, have fun, and I love you!</div>',
+            value: 8
+        },
+        {
+            html: '<div class="paper">Reminds me of our favorite meal...salmon!<br/><br/>NOTE:  Like all things, this application is not perfect...if you come across a revealed video the little checkmark at the bottom is there, you just can barely see it.  If you click in the area, it will still work :).</div>',
+            value: 42
+        },
+        {
+            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/PQddlJtYmjw?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
+            value: 23
+        },
+        {
+            html: '<img src="images/casbah.jpg" />',
+            stackedImage: true,
+            value: 18
+        },
+        {
+            html: '<img src="images/chicago.jpg" />',
+            stackedImage: true,
+            value: 23
+        },
+        {
+            html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you.<br/><img src="images/iceland.jpg" width=200 /></div>',
+            value: 23
+        },
+        {
+            html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
+            value: 7
+        },
+        {
+            html: '<img src="images/elliott_harlow.jpg">',
+            stackedImage: true,
+            value: 6
+        }
+    ];
+    
+    return (revealInfo[pageIndex] ? revealInfo[pageIndex] : {html: ""});
 }
 
 function submitAnswer() {
@@ -217,32 +293,6 @@ function submitAnswer() {
             $("#answer").removeClass("shake animated");
         }, 1000);
     }
-}
-
-function isCorrect(pageIndex)   {
-return true;
-    var answers = [
-            {
-                answer: "See you soon (don't forget to take notes).  I love you!"
-            },
-            {
-                answer: "black pepper"
-            },
-            {
-                answer: "yes"
-            },
-            {
-                answer: "no"
-            }
-        ],
-        answerSet = (answers[pageIndex] ? answers[pageIndex] : false),
-        isCorrect = false;
-    
-    if(answerSet)   {
-        isCorrect = ($("#answer").val().toLowerCase() == answerSet.answer.toLowerCase());
-    }
-    
-    return isCorrect;
 }
 
 function moveNextButton(type)   {

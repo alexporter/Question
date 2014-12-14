@@ -48,7 +48,7 @@ textarea:focus, input:focus{
     opacity: 0.81;
 }
 #stack-top {
-    z-index: 99999999999999;
+    z-index: 2;
     top: 100%;
     background-color: #1abc9c;
 }
