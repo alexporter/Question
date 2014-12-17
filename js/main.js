@@ -233,7 +233,6 @@ function setQuestion(pageIndex)  {
 }
 
 function isCorrect(pageIndex)   {
-return true;
     var questionInfo = getQuestionInfo(pageIndex),
         isCorrect = false;
     
