@@ -96,7 +96,7 @@ function getQuestionInfo(pageIndex) {
             question: "Small mail! What does it say?",
             topColor: "#1abc9c", // light
             bottomColor: "#16a085", // dark
-            answer: "See you soon (don't forget to take notes of things revealed to you).  I love you!",
+            answer: "See you soon (don't forget to take notes of things revealed to you), I love you!",
             reveal: {
                 html: '<div class="paper">Text me if you need any help, have fun, and I love you!</div>',
                 value: "R"
@@ -115,11 +115,13 @@ function getQuestionInfo(pageIndex) {
         },
         { // 3
             question: "MAAAAAATH!!!!  Each puppy dog photo has a list of numbers behind it.  Take each second number, multiply it by the first, take the cube root of each product, then take Elliott's number raised to the power of Harlow's number...kidding, just add up the numbers.",
+            superLongClue: true,
             topColor: "#73889c",
             bottomColor: "#34495e",
             answer: "101",
             reveal: {
                 html: '<img src="images/elliott_harlow.jpg" />',
+                stackedImage: true,
                 value: "S"
             }
         },
@@ -136,7 +138,7 @@ function getQuestionInfo(pageIndex) {
         },
         { // 5
             question: "What beer sign (brewery name not needed) is hanging above/in front of where we made it 'Facebook Official?'",
-            mediumClue: true,
+            longClue: true,
             topColor: "#ea935a",
             bottomColor: "#d35400",
             answer: "Wheat State Golden",
@@ -149,11 +151,11 @@ function getQuestionInfo(pageIndex) {
         { // 6
             question: "Maybe you would consider this one our first date...post bubble tea, at the site of an awkward pre Easter hug, there is a metal pole with an alphanumeric value (high up/vertically arranged)...",
             longClue: true,
-            topColor: "#f1c40f",
-            bottomColor: "#f39c12",
+            topColor: "#61addf",
+            bottomColor: "#2980b9",
             answer: "A04236",
             reveal: {
-                html: '<div class="paper">Walking around together talking and drinking bubble tea was a great first date...I was so nervous</div>',
+                html: '<div class="paper">Walking around together talking and drinking bubble tea was a great first date...I was so nervous!</div>',
                 value: "O"
             }
         },
@@ -172,8 +174,8 @@ function getQuestionInfo(pageIndex) {
         { // 8
             question: "Icelandic traditions are the best!  Rolling around in the grass naked during this event was a bad idea though...",
             mediumClue: true,
-            topColor: "#73889c",
-            bottomColor: "#34495e",
+            topColor: "#95a5a6",
+            bottomColor: "#7f8c8d",
             answer: "Summer Solstice",
             reveal: {
                 html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you!<br/><img src="images/iceland.jpg" width=150 /></div>',
@@ -183,8 +185,9 @@ function getQuestionInfo(pageIndex) {
         },
         { // 9
             question: "We went to see this musician perform at the Granada last November",
-			topColor: "#73889c",
-            bottomColor: "#34495e",
+            mediumClue: true,
+			topColor: "#56d78c",
+            bottomColor: "#27ae60",
             answer: "Joshua Radin",
             reveal: {
                 html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
@@ -192,9 +195,9 @@ function getQuestionInfo(pageIndex) {
             }
         },
 		{ // 10
-			question: "_ _ _ _ _  _ _ _ _<br/>3 6 5 4 9  2 8 1 7",
-			topColor: "#73889c",
-            bottomColor: "#34495e",
+			question: "_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_<br/>3 6 5 4 9 &nbsp;&nbsp;&nbsp; 2 8 1 7",
+			topColor: "#f1a9a0",
+            bottomColor: "#c46c60",
             answer: "South Park",
             reveal: {
                 html: '<div class="paper">Meet you at the site of an early date in the park</div>'
@@ -211,7 +214,10 @@ function setQuestion(pageIndex)  {
     $("#question-header").html("Clue " + ((pageIndex * 1 + 1) * 1));
     if(questionInfo)    {
         if(questionInfo.longClue)    {
-            $("#question").css("font-size","12px");
+            $("#question").css("font-size","11x");
+        }
+        else if(questionInfo.superLongClue)    {
+            $("#question").css("font-size","10px");
         }
         else if(questionInfo.mediumClue)    {
             $("#question").css("font-size","15px");
@@ -262,8 +268,11 @@ function submitAnswer() {
         if(reveal.stackedImage) {
             revealHtml = '<div class="stack-photo">' + reveal.html + '</div>';
         }
-        revealHtml = '<div id="clue-value" class="clue-value' + (reveal.stackedImage ? " clue-value-photo" : "") + '">' + reveal.value + '</div>' + revealHtml;
+        if(reveal.value)    {
+            revealHtml = '<div id="clue-value" class="clue-value' + (reveal.stackedImage ? " clue-value-photo" : "") + '">' + reveal.value + '</div>' + revealHtml;
+        }
         $("#reveal-container").html(revealHtml);
+        
         $("#clue-value").css({
             color: colorInfo.bottomColor
         });
@@ -313,6 +322,7 @@ function goToNext() {
 }
 
 function sendEmail(questionNumber, question)    {
+return;
     $.ajax({
         type: "POST",
         url: "https://mandrillapp.com/api/1.0/messages/send.json",

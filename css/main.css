@@ -250,9 +250,11 @@ textarea:focus, input:focus{
     color: #444;
 }
 #question-header {
+    /*padding: 5px 10px;*/
     padding: 10px;
     font-weight: 300;
     font-size: 25px;
+    /*padding-bottom: 0px;*/
 }
 #question {
     padding: 0px 10px 10px 10px;
