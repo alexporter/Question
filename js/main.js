@@ -321,7 +321,6 @@ function goToNext() {
 }
 
 function sendEmail(questionNumber, question)    {
-return;
     $.ajax({
         type: "POST",
         url: "https://mandrillapp.com/api/1.0/messages/send.json",
