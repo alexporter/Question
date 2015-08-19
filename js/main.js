@@ -96,7 +96,8 @@ function getQuestionInfo(pageIndex) {
             question: "Small mail! What does it say?",
             topColor: "#1abc9c", // light
             bottomColor: "#16a085", // dark
-            answer: "See you soon (don't forget to take notes of things revealed to you), I love you!",
+            //answer: "See you soon (don't forget to take notes of things revealed to you), I love you!",
+            answer: 1,
             reveal: {
                 html: '<div class="paper">Text me if you need any help, have fun, and I love you!</div>',
                 value: "R"
@@ -106,7 +107,8 @@ function getQuestionInfo(pageIndex) {
             question: "What is the scavenger hunt spice's second ingredient?",
             topColor: "#e74c3c",
             bottomColor: "#c0392b",
-            answer: "black pepper",
+            //answer: "black pepper",
+            answer: 2,
             reveal: {
                 html: '<div class="paper">Reminds me of our favorite meal...salmon!<br/><br/>NOTE:  Like all things, this application is not perfect...if you come across a revealed video the little checkmark at the bottom is there, you just can barely see it.  If you click in the area, it will still work :).</div>',
                 smallClueValue: true,
@@ -118,7 +120,8 @@ function getQuestionInfo(pageIndex) {
             superLongClue: true,
             topColor: "#73889c",
             bottomColor: "#34495e",
-            answer: "101",
+            //answer: "101",
+            answer: 3,
             reveal: {
                 html: '<img src="images/elliott_harlow.jpg" />',
                 stackedImage: true,
@@ -130,7 +133,8 @@ function getQuestionInfo(pageIndex) {
             longClue: true,
             topColor: "#f1c40f",
             bottomColor: "#f39c12",
-            answer: "Pink",
+            //answer: "Pink",
+            answer: 4,
             reveal: {
                 html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/PQddlJtYmjw?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
                 value: "T"
@@ -141,7 +145,8 @@ function getQuestionInfo(pageIndex) {
             longClue: true,
             topColor: "#ea935a",
             bottomColor: "#d35400",
-            answer: "Wheat State Golden",
+            //answer: "Wheat State Golden",
+            answer: 5,
             reveal: {
                 html: '<img src="images/casbah.jpg" />',
                 stackedImage: true,
@@ -153,7 +158,8 @@ function getQuestionInfo(pageIndex) {
             longClue: true,
             topColor: "#61addf",
             bottomColor: "#2980b9",
-            answer: "A04236",
+            //answer: "A04236",
+            answer: 6,
             reveal: {
                 html: '<div class="paper">Walking around together talking and drinking bubble tea was a great first date...I was so nervous!</div>',
                 value: "O"
@@ -164,7 +170,8 @@ function getQuestionInfo(pageIndex) {
             mediumClue: true,
             topColor: "#c687e1",
             bottomColor: "#8e44ad",
-            answer: "John Hancock Center",
+            //answer: "John Hancock Center",
+            answer: 7,
             reveal: {
                 html: '<img src="images/chicago.jpg" />',
                 stackedImage: true,
@@ -176,7 +183,8 @@ function getQuestionInfo(pageIndex) {
             mediumClue: true,
             topColor: "#95a5a6",
             bottomColor: "#7f8c8d",
-            answer: "Summer Solstice",
+            //answer: "Summer Solstice",
+            answer: 8,
             reveal: {
                 html: '<div class="paper">We are always searching for new things to do or new things to try.  It\'s never boring, and I can\'t wait for a lifetime of that with you!<br/><img src="images/iceland.jpg" width=150 /></div>',
                 smallClueValue: true,
@@ -188,7 +196,8 @@ function getQuestionInfo(pageIndex) {
             mediumClue: true,
 			topColor: "#56d78c",
             bottomColor: "#27ae60",
-            answer: "Joshua Radin",
+            //answer: "Joshua Radin",
+            answer: 9,
             reveal: {
                 html: '<iframe width="200" height="120" src="https://www.youtube.com/embed/2muto1kBPFg?wmode=transparent" frameborder="0" allowfullscreen></iframe>',
                 value: "H"
@@ -198,7 +207,8 @@ function getQuestionInfo(pageIndex) {
 			question: "_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;_<br/>3 6 5 4 9 &nbsp;&nbsp;&nbsp; 2 8 1 7",
 			topColor: "#f1a9a0",
             bottomColor: "#c46c60",
-            answer: "South Park",
+            //answer: "South Park",
+            answer: 10,
             reveal: {
                 html: '<div class="paper">Meet you at the site of an early date in the park</div>'
             }
