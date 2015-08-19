@@ -247,7 +247,9 @@ function isCorrect(pageIndex)   {
         isCorrect = false;
     
     if(questionInfo)   {
-        isCorrect = ($("#answer").val().toLowerCase() == questionInfo.answer.toLowerCase());
+    	var attempt = (typeof $("#answer").val() === 'string' ? $("#answer").val().toLowerCase() : $("#answer").val()),
+    	    answer = (typeof questionInfo.answer === 'string' ? questionInfo.answer.toLowerCase() : questionInfo.answer);
+        isCorrect = (attempt == answer);
     }
     
     return isCorrect;
